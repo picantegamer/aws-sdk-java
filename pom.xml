@@ -172,9 +172,9 @@
                 <releaseGoal>clean</releaseGoal>
                 <releaseGoal>deploy</releaseGoal>
               </releaseGoals>
-              <releaseProfiles>
+              <!--releaseProfiles>
                 <releaseProfile>sonatype-release</releaseProfile>
-              </releaseProfiles>
+              </releaseProfiles-->
             </configuration>
         </plugin>
       </plugins>
