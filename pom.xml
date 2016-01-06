@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.amazonaws</groupId>
   <artifactId>aws-java-sdk-pom</artifactId>
-  <version>1.10.45-SNAPSHOT</version>
+  <version>1.15-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>AWS SDK for Java</name>
   <description>The Amazon Web Services SDK for Java provides Java APIs
@@ -97,8 +97,18 @@
     <module>aws-java-sdk-test-utils</module>
   </modules>
   <scm>
-    <url>https://github.com/aws/aws-sdk-java.git</url>
+      <connection>scm:git:git@github.com/manikandanrs/aws-sdk-java.git</connection>
+      <developerConnection>scm:git:git@github.com:manikandanrs/aws-sdk-java.git</developerConnection>
+      <url>https://github.com/manikandanrs/aws-sdk-java.git</url>
   </scm>
+
+  <distributionManagement>
+      <repository>
+          <id>releases</id>
+          <url>http://localhost:8081/nexus/content/repositories/releases</url>
+      </repository>
+  </distributionManagement>
+
   <properties>
     <freemarker.version>2.3.9</freemarker.version>
     <javax.mail.version>1.4.6</javax.mail.version>
@@ -153,12 +163,26 @@
             <maxmemory>1024m</maxmemory>
           </configuration>
         </plugin>
+        <plugin>
+            <groupId>com.github.danielflower.mavenplugins</groupId>
+            <artifactId>multi-module-maven-release-plugin</artifactId>
+            <version>1.4.2</version>
+            <configuration>
+              <releaseGoals>
+                <releaseGoal>clean</releaseGoal>
+                <releaseGoal>deploy</releaseGoal>
+              </releaseGoals>
+              <releaseProfiles>
+                <releaseProfile>sonatype-release</releaseProfile>
+              </releaseProfiles>
+            </configuration>
+        </plugin>
       </plugins>
     </pluginManagement>
   </build>
   <profiles>
     <profile>
-      <id>publishing</id>
+      <id>sonatype-release</id>
       <build>
         <plugins>
           <plugin>
@@ -172,16 +196,6 @@
                 </goals>
               </execution>
             </executions>
-          </plugin>
-          <plugin>
-            <groupId>org.sonatype.plugins</groupId>
-            <artifactId>nexus-staging-maven-plugin</artifactId>
-            <version>1.5.1</version>
-            <extensions>true</extensions>
-            <configuration>
-              <serverId>sonatype-nexus-staging</serverId>
-              <nexusUrl>https://oss.sonatype.org</nexusUrl>
-            </configuration>
           </plugin>
         </plugins>
       </build>
