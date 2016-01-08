@@ -97,9 +97,9 @@
     <module>aws-java-sdk-test-utils</module>
   </modules>
   <scm>
-      <connection>scm:git:git@github.com/manikandanrs/aws-sdk-java.git</connection>
-      <developerConnection>scm:git:git@github.com:manikandanrs/aws-sdk-java.git</developerConnection>
-      <url>https://github.com/manikandanrs/aws-sdk-java.git</url>
+      <connection>scm:git:git@github.com/picantegamer/aws-sdk-java.git</connection>
+      <developerConnection>scm:git:git@github.com:picantegamer/aws-sdk-java.git</developerConnection>
+      <url>https://github.com/picantegamer/aws-sdk-java.git</url>
   </scm>
 
   <distributionManagement>
